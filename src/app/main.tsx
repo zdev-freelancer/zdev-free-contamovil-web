@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useAuthStore } from './app/stores/authStore';
+import { useAuthStore } from './stores/authStore.ts';
 import App from './App';
 import './index.css'
 
