@@ -1,24 +1,35 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { LoadingFallback } from '@/shared/components/LoadingFallback'
+import { dashboardRoutes } from '@/domains/dashboard/infrastructure/routes'
+import { trainingsRoutes } from '@/domains/trainings/infrastructure/routes'
+import { studentsRoutes } from '@/domains/students/infrastructure/routes'
+import { authRoutes } from '@/auth/infrastructure/routes'
+import { gamificationRoutes } from '@/domains/gamification/infrastructure/routes'
+import { calendarRoutes } from '@/domains/calendar/infrastructure/routes'
 
-import { ProtectedRoute } from '@/shared/components/ProtectedRoute';
-import { GuestRoute } from '@/shared/components/GuestRoute';
+const RootLayout = lazy(() => import('@/app/layouts/RootLayout'))
+const NotFound = lazy(() => import('@/shared/pages/NotFound'))
 
-const RootLayout = lazy(() => import('@/app/layouts/RootLayout'));
-const Register = lazy(() => import('@/auth/pages/Register'));
-const Dashboard = lazy(() => import('@/dashboard/pages/Dashboard'));
-const NotFound = lazy(() => import('@/shared/pages/NotFound'));
+const domainRoutes = [
+  ...dashboardRoutes,
+  ...trainingsRoutes,
+  ...studentsRoutes,
+  ...gamificationRoutes,
+  ...calendarRoutes,
+  ...authRoutes,
+]
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
         <RootLayout />
       </Suspense>
     ),
     errorElement: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
         <NotFound />
       </Suspense>
     ),
@@ -27,30 +38,11 @@ export const router = createBrowserRouter([
         index: true,
         element: <Navigate to="/dashboard" replace />,
       },
-      {
-        path: 'dashboard',
-        element: (
-          <ProtectedRoute>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Dashboard />
-            </Suspense>
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'register',
-        element: (
-          <GuestRoute>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Register />
-            </Suspense>
-          </GuestRoute>
-        ),
-      },
+      ...domainRoutes,
       {
         path: '*',
         element: <Navigate to="/" replace />,
       },
     ],
   },
-]);
+])

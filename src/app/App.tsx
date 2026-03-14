@@ -1,14 +1,21 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes'
+import { AppProviders } from './providers/AppProviders'
+import { useEffect } from 'react'
+import { useAuthStore } from './stores/authStore'
 
-function App() {
+const App = () => {
+  const initializeAuth = useAuthStore((state) => state.initializeAuth)
+  
+  useEffect(() => {
+    initializeAuth()
+  }, [initializeAuth])
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/login" element={<h1>Login</h1>} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
+  )
 }
 
-export default App;
+export default App
