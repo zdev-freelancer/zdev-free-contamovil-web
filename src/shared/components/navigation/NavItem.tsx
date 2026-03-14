@@ -26,13 +26,12 @@ export function NavItem({
   const location = useLocation()
   const isActive = active ?? location.pathname === to
   const baseClasses = cn(
-    'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+    'flex items-center gap-3 px-3 py-2 rounded-[10px] text-[13px] font-semibold transition-all duration-150',
     {
-      'bg-primary text-primary-foreground shadow-sm': isActive,
+      'bg-[rgba(91,78,218,0.15)] border-l-[3px] border-[#5B4EDA] text-[#5B4EDA]': isActive,
       'text-muted-foreground hover:bg-accent hover:text-accent-foreground':
         !isActive && !disabled,
       'opacity-50 cursor-not-allowed': disabled,
-      'hover:scale-105': !isActive && !disabled,
     },
     className
   )

@@ -28,7 +28,7 @@ export function UserMenu({ trainer, loading }: UserMenuProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button 
-          className="flex items-center space-x-2 p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md transition-colors"
+          className="flex items-center space-x-2 p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-xl transition-all duration-200"
           aria-label="Menú de usuario"
         >
           <Avatar>
@@ -38,7 +38,7 @@ export function UserMenu({ trainer, loading }: UserMenuProps) {
 
           <div className="hidden md:flex flex-col gap-0.5 leading-none text-left">
             {loading ? (
-              <span className="text-sm text-gray-400">Cargando...</span>
+              <span className="text-sm text-muted-foreground">Cargando...</span>
             ) : (
               <span className="font-semibold text-sm">{displayName}</span>
             )}

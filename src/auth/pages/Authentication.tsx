@@ -1,41 +1,28 @@
-import {
-  Card,
-  CardContent,
-} from '@/shared/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs'
 import LoginForm from '../components/organisms/LoginForm'
-import RegisterForm from '../components/organisms/RegisterForm'
 
 export default function AuthenticationPage() {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="w-full max-w-lg p-4">
-        <Card>
-          <CardContent className="p-6">
-            <Tabs 
-              defaultValue="login" 
-              className="w-full"
-              aria-label="Formularios de autenticación"
-            >
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">
-                  Iniciar sesión
-                </TabsTrigger>
-                <TabsTrigger value="register">
-                  Registrarme
-                </TabsTrigger>
-              </TabsList>
+    <div 
+      className="min-h-screen flex items-center justify-center bg-background"
+      style={{
+        backgroundImage: 'radial-gradient(circle at center, rgba(91, 78, 218, 0.06) 0%, transparent 70%)'
+      }}
+    >
+      <div className="w-full max-w-[400px] p-4 flex flex-col items-center">
+        {/* Top Logo Section - 16px gap below */}
+        <div className="flex flex-col items-center gap-[16px] mb-[32px]">
+          {/* Logo Mark: 64px */}
+          <div className="h-[64px] w-[64px] bg-primary rounded-full flex items-center justify-center" />
+          
+          {/* Wordmark: 24px bold */}
+          <h1 className="text-[24px] font-bold text-foreground lowercase tracking-tight">
+            contamóvil
+          </h1>
+        </div>
 
-              <TabsContent value="login" className="mt-6">
-                <LoginForm />
-              </TabsContent>
-
-              <TabsContent value="register" className="mt-6">
-                <RegisterForm />
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
+        <div className="w-full">
+          <LoginForm />
+        </div>
       </div>
     </div>
   )

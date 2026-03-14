@@ -1,23 +1,18 @@
-// @/modules/auth/components/LoginForm.tsx
 import { useState } from 'react'
 import {
+  Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from '@/shared/ui/card'
 import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
 import { Button } from '@/shared/ui/button'
 import { Alert, AlertDescription } from '@/shared/ui/alert'
-import { Chrome } from 'lucide-react'
 import { useLogin } from '@/auth/hooks/useLogin'
 
 export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { loginWithEmail, loginWithGoogle, error, loading } = useLogin()
+  const { loginWithEmail, error, loading } = useLogin()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,26 +20,19 @@ export default function LoginForm() {
   }
 
   return (
-    <>
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-semibold text-center">
-          Bienvenido de vuelta
-        </CardTitle>
-        <CardDescription className="text-center">
-          Ingresa tus credenciales para acceder a tu cuenta
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent className="space-y-4">
+    <Card className="rounded-[20px] shadow-card border-border w-full">
+      <CardContent className="p-[28px] space-y-4">
         {error && (
           <Alert variant="destructive">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+        <form onSubmit={handleSubmit} className="space-y-[16px]">
+          <div className="space-y-[8px]">
+            <Label htmlFor="email" className="text-[12px] font-semibold text-muted-foreground static text-left block">
+              Email
+            </Label>
             <Input
               id="email"
               type="email"
@@ -57,19 +45,10 @@ export default function LoginForm() {
             />
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Contraseña</Label>
-              <Button
-                type="button"
-                variant="link"
-                size="sm"
-                className="px-0 font-normal"
-                onClick={() => console.log('Implementar recuperación')}
-              >
-                ¿Olvidaste tu contraseña?
-              </Button>
-            </div>
+          <div className="space-y-[8px]">
+            <Label htmlFor="password" className="text-[12px] font-semibold text-muted-foreground static text-left block">
+              Contraseña
+            </Label>
             <Input
               id="password"
               type="password"
@@ -81,35 +60,24 @@ export default function LoginForm() {
             />
           </div>
 
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
-          </Button>
+          <div className="pt-2">
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
+            </Button>
+          </div>
+
+          {/* Optional Forgot password link in 12px muted under button */}
+          <div className="text-center mt-[12px]">
+            <button
+              type="button"
+              className="text-[12px] text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => console.log('Implementar recuperación')}
+            >
+              ¿Olvidaste tu contraseña?
+            </button>
+          </div>
         </form>
       </CardContent>
-
-      <CardFooter className="flex flex-col gap-4">
-        <div className="relative w-full">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              O continúa con
-            </span>
-          </div>
-        </div>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full"
-          onClick={loginWithGoogle}
-          disabled={loading}
-        >
-          <Chrome className="mr-2 h-4 w-4" />
-          Continuar con Google
-        </Button>
-      </CardFooter>
-    </>
+    </Card>
   )
 }

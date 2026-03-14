@@ -27,10 +27,10 @@ export function PersonCard() {
         <span className="font-semibold">{displayName}</span>
         
         <div className="flex items-center gap-1">
-          <span className="text-xs bg-orange-500 text-white px-2 py-1 rounded-lg">
+          <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-lg">
             Plan Gratuito
           </span>
-          <Crown className="w-3 h-3 text-orange-500" />
+          <Crown className="w-3 h-3 text-primary" />
         </div>
       </div>
     </div>
@@ -40,10 +40,10 @@ export function PersonCard() {
 function PersonCardSkeleton() {
   return (
     <div className="flex items-center gap-3">
-      <div className="size-8 rounded-full bg-gray-200 animate-pulse" />
+      <div className="size-8 rounded-full bg-muted animate-pulse" />
       <div className="flex flex-col gap-1">
-        <div className="h-4 w-24 bg-gray-200 rounded animate-pulse" />
-        <div className="h-5 w-20 bg-gray-200 rounded animate-pulse" />
+        <div className="h-4 w-24 bg-muted rounded animate-pulse" />
+        <div className="h-5 w-20 bg-muted rounded animate-pulse" />
       </div>
     </div>
   )

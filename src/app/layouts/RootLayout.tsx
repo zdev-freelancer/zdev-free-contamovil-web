@@ -18,17 +18,17 @@ export default function RootLayout() {
   }
 
   return (
-    <div className="flex h-dvh w-dvw overflow-hidden">
+    <div className="flex h-dvh w-dvw overflow-hidden bg-sidebar">
       {/* Sidebar fijo */}
       <AppSidebar />
 
-      {/* Contenido principal */}
-      <SidebarInset className="flex-1 flex flex-col min-h-0">
+      {/* Contenido principal flotante */}
+      <SidebarInset className="flex-1 flex flex-col min-h-0 overflow-hidden bg-card md:peer-data-[variant=inset]:rounded-[16px] md:border md:border-border shadow-sm">
         {/* Navbar global fija */}
         <AppNavbar />
 
         {/* Espacio para cada página (Outlet) */}
-        <div className="p-4  flex-1 flex flex-col overflow-hidden min-h-0">
+        <div className="flex-1 flex flex-col overflow-auto p-4 bg-transparent">
           <Outlet />
         </div>
       </SidebarInset>

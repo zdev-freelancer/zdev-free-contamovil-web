@@ -1,12 +1,11 @@
 import {
   type LucideIcon,
   Home,
-  Dumbbell,
-  Settings,
+  Package,
+  ShoppingCart,
+  Store,
   BarChart3,
-  Calendar,
-  Users,
-  Award,
+  Settings,
 } from 'lucide-react'
 
 export interface NavigationItem {
@@ -36,40 +35,30 @@ export const navigationConfig: NavigationItem[] = [
     showInMobile: true,
   },
   {
-    id: 'students',
-    label: 'Estudiantes',
-    href: '/students',
-    icon: Users,
+    id: 'inventory',
+    label: 'Inventario',
+    href: '/inventory',
+    icon: Package,
     requiresAuth: true,
     showInSidebar: true,
     showInNavbar: false,
     showInMobile: true,
   },
   {
-    id: 'trainings',
-    label: 'Entrenamientos',
-    href: '/trainings',
-    icon: Dumbbell,
+    id: 'sales',
+    label: 'Ventas',
+    href: '/sales',
+    icon: ShoppingCart,
     requiresAuth: true,
     showInSidebar: true,
     showInNavbar: false,
     showInMobile: true,
   },
   {
-    id: 'calendar',
-    label: 'Calendario',
-    href: '/calendar',
-    icon: Calendar,
-    requiresAuth: true,
-    showInSidebar: true,
-    showInNavbar: false,
-    showInMobile: true,
-  },
-  {
-    id: 'gamification',
-    label: 'Logros',
-    href: '/gamification',
-    icon: Award,
+    id: 'shop',
+    label: 'Tienda',
+    href: '/shop',
+    icon: Store,
     requiresAuth: true,
     showInSidebar: true,
     showInNavbar: false,
@@ -83,7 +72,7 @@ export const navigationConfig: NavigationItem[] = [
     requiresAuth: true,
     showInSidebar: true,
     showInNavbar: false,
-    showInMobile: false,
+    showInMobile: true,
   },
   {
     id: 'settings',
@@ -91,11 +80,10 @@ export const navigationConfig: NavigationItem[] = [
     href: '/settings',
     icon: Settings,
     requiresAuth: true,
-    showInSidebar: true,
+    showInSidebar: true, // Though it will explicitly be in the bottom pinned section
     showInNavbar: false,
     showInMobile: true,
   },
-
   // Rutas de guest (sin auth)
   {
     id: 'authentication',
@@ -106,20 +94,11 @@ export const navigationConfig: NavigationItem[] = [
     showInNavbar: false,
     showInMobile: false,
   },
-  {
-    id: 'login',
-    label: 'Login',
-    href: '/login',
-    guestOnly: true, // ← Solo para GuestRoute
-    showInSidebar: false,
-    showInNavbar: false,
-    showInMobile: false,
-  },
 ]
 
 // Helpers para filtrar rutas
 export const getSidebarRoutes = () =>
-  navigationConfig.filter((item) => item.showInSidebar && item.requiresAuth)
+  navigationConfig.filter((item) => item.showInSidebar && item.requiresAuth && item.id !== 'settings') // Handle settings specifically
 
 export const getNavbarRoutes = () =>
   navigationConfig.filter((item) => item.showInNavbar && item.requiresAuth)

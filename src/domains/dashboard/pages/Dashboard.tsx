@@ -10,7 +10,7 @@ export default function Dashboard() {
         <PageHeader.Content>
           <div>
             <PageHeader.Title>Dashboard</PageHeader.Title>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Resumen de tu actividad como entrenador
             </p>
           </div>

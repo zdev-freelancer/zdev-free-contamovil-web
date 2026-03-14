@@ -20,7 +20,7 @@ export default function SelectFieldCustom({
   return (
 	<div className="relative w-full">
 		{Icon && (
-		<div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10">
+		<div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground z-10">
 			<Icon className={cn('size-4 shrink-0')} />
 		</div>
 		)}

@@ -6,10 +6,31 @@
 @layer base {
   body {
     @apply bg-background text-foreground antialiased;
+    /* Transition is handled in index.css body selector */
+  }
+
+  /* Custom scrollbars according to spec */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(91, 78, 218, 0.3);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(91, 78, 218, 0.5);
   }
 }
 
-/* Si quieres mantener la animación, la puedes traer */
+/* Brand utility classes */
+@layer components {
+  /* Removed glow classes per new spec: "no glow" */
+}
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);

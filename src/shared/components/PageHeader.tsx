@@ -24,7 +24,7 @@ interface PageHeaderContentProps {
 function PageHeaderRoot({ children, className = '' }: PageHeaderProps) {
   return (
     <header
-      className={`flex flex-col  space-y-4 p-2 pb-6 bg-white border-b ${className}`}
+      className={`flex flex-col space-y-4 p-2 pb-6 bg-transparent border-b border-border mb-6 ${className}`}
     >
       {children}
     </header>
@@ -35,7 +35,7 @@ function PageHeaderRoot({ children, className = '' }: PageHeaderProps) {
 function PageHeaderTitle({ children, className = '' }: PageHeaderTitleProps) {
   return (
     <h1
-      className={`text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 ${className}`}
+      className={`text-xl md:text-2xl font-bold text-foreground ${className}`}
     >
       {children}
     </h1>
