@@ -2,6 +2,10 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { AppSidebar } from '@/shared/components/navigation/AppSidebar'
 import { AppNavbar } from '@/shared/components/navigation/AppNavbar'
 import { SidebarInset } from '@/shared/ui/sidebar'
+import { RouteTransitionWrapper } from '@/shared/components/wrappers/RouteTransitionWrapper'
+import '@/shared/styles/route-transitions.css'
+
+
 
 export default function RootLayout() {
   const location = useLocation()
@@ -29,7 +33,9 @@ export default function RootLayout() {
 
         {/* Espacio para cada página (Outlet) */}
         <div className="flex-1 flex flex-col overflow-auto p-4 bg-transparent">
-          <Outlet />
+          <RouteTransitionWrapper>
+            <Outlet />
+          </RouteTransitionWrapper>
         </div>
       </SidebarInset>
     </div>

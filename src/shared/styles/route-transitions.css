@@ -1,0 +1,72 @@
+/* Route transition animations */
+
+.route-fade-in {
+  animation: routeFadeIn 0.4s ease-in-out;
+}
+
+.route-fade-out {
+  animation: routeFadeOut 0.3s ease-in-out;
+}
+
+.route-slide-in-right {
+  animation: routeSlideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.route-slide-in-left {
+  animation: routeSlideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition {
+  animation: pageTransition 0.35s ease-in-out;
+}
+
+@keyframes routeFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes routeFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes routeSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes routeSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

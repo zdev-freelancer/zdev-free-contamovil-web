@@ -12,6 +12,7 @@ import {
 import { getSidebarRoutes } from '@/app/config/navigation.config'
 import { NavItem } from './NavItem'
 import { Settings } from 'lucide-react'
+import logoImage from '@/assets/ContaMovil.png?url'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const sidebarRoutes = getSidebarRoutes()
@@ -20,7 +21,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar variant="inset" {...props}>
       <SidebarHeader className="h-[64px] flex items-center justify-start flex-row px-4">
         <Link to="/" className="flex items-center gap-3 overflow-hidden w-full">
-          <div className="flex items-center justify-center h-[32px] w-[32px] bg-primary rounded-full flex-shrink-0" />
+          <img 
+            src={logoImage}
+            alt="Contamóvil logo"
+            className="h-[32px] w-[32px] object-contain flex-shrink-0"
+          />
           <span className="text-[20px] font-bold tracking-tight lowercase text-foreground group-data-[collapsible=icon]:hidden whitespace-nowrap">
             contamóvil
           </span>

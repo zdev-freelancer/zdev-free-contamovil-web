@@ -1,4 +1,5 @@
 import LoginForm from '../components/organisms/LoginForm'
+import logoImage from '@/assets/ContaMovil.png?url'
 
 export default function AuthenticationPage() {
   return (
@@ -12,11 +13,15 @@ export default function AuthenticationPage() {
         {/* Top Logo Section - 16px gap below */}
         <div className="flex flex-col items-center gap-[16px] mb-[32px]">
           {/* Logo Mark: 64px */}
-          <div className="h-[64px] w-[64px] bg-primary rounded-full flex items-center justify-center" />
+          <img 
+          src={logoImage}
+          alt="Contamóvil logo"
+          className="h-[64px] w-[64px] object-contain"
+          />
           
           {/* Wordmark: 24px bold */}
-          <h1 className="text-[24px] font-bold text-foreground lowercase tracking-tight">
-            contamóvil
+          <h1 className="text-[36px] font-bold text-foreground lowercase tracking-tight">
+            ContaMóvil
           </h1>
         </div>
 
