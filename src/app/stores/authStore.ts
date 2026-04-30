@@ -6,6 +6,8 @@ interface AuthState {
   user: AuthUser | null
   loading: boolean
   initialized: boolean
+
+  tenantId: () => string | null
   setUser: (user: AuthUser | null) => void
   logout: () => Promise<void>
   initializeAuth: () => Promise<void>
@@ -15,6 +17,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   loading: true,
   initialized: false,
+
+  tenantId: () => get().user?.tenantId ?? null,
 
   setUser: (user) => set({ user }),
 
@@ -33,10 +37,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     try {
       const user = await authService.getCurrentSession()
-      set({ 
-        user, 
+      set({
+        user,
         loading: false,
-        initialized: true 
+        initialized: true,
       })
 
       authService.onAuthStateChange((user) => {
@@ -45,10 +49,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     } catch (error) {
       console.error('Auth initialization error:', error)
-      set({ 
-        loading: false, 
+      set({
+        loading: false,
         initialized: true,
-        user: null 
+        user: null,
       })
     }
   },

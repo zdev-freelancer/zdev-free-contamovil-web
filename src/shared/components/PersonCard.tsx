@@ -1,31 +1,28 @@
 import { Crown } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Avatar, AvatarFallback } from '../ui/avatar'
 import { useAuth } from '@/auth/hooks/useAuth'
-import { useTrainer } from '../hooks/useTrainer'
 import { getInitials, getShortName } from '../utils/nameHelpers'
 
 export function PersonCard() {
-  const { user } = useAuth()
-  const { trainer, loading } = useTrainer(user?.id)
+  const { user, isLoading } = useAuth()
 
-  if (loading) {
+  if (isLoading) {
     return <PersonCardSkeleton />
   }
 
-  const displayName = getShortName(trainer?.first_name, trainer?.last_name)
-  const initials = getInitials(trainer?.first_name, trainer?.last_name)
-  const avatarUrl = trainer?.photo_url || undefined
+  const nameParts = user?.fullName?.split(' ') ?? []
+  const displayName = getShortName(nameParts[0], nameParts[1])
+  const initials = getInitials(nameParts[0], nameParts[1])
 
   return (
     <div className="flex items-center gap-3">
       <Avatar className="size-8">
-        <AvatarImage src={avatarUrl} alt={displayName} />
         <AvatarFallback>{initials}</AvatarFallback>
       </Avatar>
-      
+
       <div className="flex flex-col gap-0.5 leading-none">
         <span className="font-semibold">{displayName}</span>
-        
+
         <div className="flex items-center gap-1">
           <span className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded-lg">
             Plan Gratuito
