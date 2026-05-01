@@ -40,7 +40,6 @@ const categoryColors = {
 export function AchievementBadge({
   achievement,
   unlocked,
-  showProgress = false,
   size = "medium",
   onClick,
 }: AchievementBadgeProps) {
