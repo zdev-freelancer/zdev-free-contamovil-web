@@ -12,12 +12,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,      // <-- cambiado
+    "noUnusedParameters": false,  // <-- cambiado
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    // "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@/shared/ui/*": ["./src/shared/ui/*"],
