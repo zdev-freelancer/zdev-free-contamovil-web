@@ -1,3 +1,3 @@
-export function ChallengeCard() {
+export function AchievementSystem() {
   return null
 }

@@ -28,7 +28,7 @@ export function PersonalizedChallenges() {
     return matchesSearch && matchesStatus && matchesType
   })
 
-  const handleCreateChallenge = (newChallenge: any) => {
+  const handleCreateChallenge = (newChallenge: Challenge) => {
     setChallenges([...challenges, newChallenge])
   }
 
@@ -182,7 +182,7 @@ export function PersonalizedChallenges() {
             challenge={challenge}
             showProgress={true}
             allowEdit={true}
-            onUpdate={(progress) => handleUpdateProgress(challenge.id, progress)}
+            onUpdate={(progress: number) => handleUpdateProgress(challenge.id, progress)}
             onEdit={() => console.log("Edit challenge:", challenge.id)}
             onTogglePause={() => handleTogglePause(challenge.id)}
           />
