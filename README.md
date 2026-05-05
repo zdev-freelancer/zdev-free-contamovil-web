@@ -1,6 +1,6 @@
-# TrainerHub Frontend
+# Contamovil Wev
 
-Frontend del proyecto **TrainerHub**, desarrollado con **React + Vite** y **TypeScript**.  
+Frontend del proyecto **Contamovil web**, desarrollado con **React + Vite** y **TypeScript**.  
 Incluye integración con **TailwindCSS** y **shadcn/ui** para construir una interfaz moderna, rápida y escalable.
 
 ## 🚀 Tecnologías
